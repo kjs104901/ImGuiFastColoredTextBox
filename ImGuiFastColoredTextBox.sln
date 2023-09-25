@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuiFastColoredTextBox", "ImGuiFastColoredTextBox\ImGuiFastColoredTextBox.csproj", "{95605DFE-77D3-4CD8-A015-40A9DFEFDC8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuiFastColoredTextBoxDemo", "ImGuiFastColoredTextBoxDemo\ImGuiFastColoredTextBoxDemo.csproj", "{F8DD8385-63C8-4FCC-9359-38202B92EBE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95605DFE-77D3-4CD8-A015-40A9DFEFDC8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95605DFE-77D3-4CD8-A015-40A9DFEFDC8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95605DFE-77D3-4CD8-A015-40A9DFEFDC8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95605DFE-77D3-4CD8-A015-40A9DFEFDC8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8DD8385-63C8-4FCC-9359-38202B92EBE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DD8385-63C8-4FCC-9359-38202B92EBE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DD8385-63C8-4FCC-9359-38202B92EBE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DD8385-63C8-4FCC-9359-38202B92EBE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7341F618-03F8-460F-8898-73F0EA04668B}
+	EndGlobalSection
+EndGlobal
