@@ -165,8 +165,6 @@ namespace FastColoredTextBoxNS
                 end = new Place(0, 0);
                 start = new Place(tb[tb.LinesCount - 1].Count, tb.LinesCount - 1);
             }
-            if (this == tb.Selection)
-                tb.
         }
 
         /// <summary>
@@ -737,8 +735,6 @@ namespace FastColoredTextBoxNS
             int code = tb.GetOrSetStyleLayerIndex(style);
             //set code to chars
             SetStyle(ToStyleIndex(code));
-            //
-            tb.
         }
 
         /// <summary>
@@ -782,8 +778,6 @@ namespace FastColoredTextBoxNS
             //
             foreach (var range in GetRanges(regexPattern, options))
                 range.SetStyle(styleLayer);
-            //
-            tb.
         }
 
         /// <summary>
@@ -793,8 +787,6 @@ namespace FastColoredTextBoxNS
         {
             foreach (var range in GetRanges(regex))
                 range.SetStyle(styleLayer);
-            //
-            tb.
         }
 
         /// <summary>
@@ -850,8 +842,6 @@ namespace FastColoredTextBoxNS
 
             foreach (var range in GetRanges(finishFoldingPattern, options))
                 tb[range.Start.iLine].FoldingEndMarker = startFoldingPattern;
-            //
-            tb.
         }
 
         /// <summary>
@@ -866,8 +856,6 @@ namespace FastColoredTextBoxNS
                     tb[range.Start.iLine - 1].FoldingEndMarker = foldingPattern;
                 tb[range.Start.iLine].FoldingStartMarker = foldingPattern;
             }
-
-            tb.
         }
         /// <summary>
         /// Finds ranges for given regex pattern
@@ -1050,8 +1038,6 @@ namespace FastColoredTextBoxNS
                     tb[y][x] = c;
                 }
             }
-            //
-            tb.
         }
 
         /// <summary>
@@ -1066,8 +1052,6 @@ namespace FastColoredTextBoxNS
             //
             for (int y = fromLine; y <= toLine; y++)
                 tb[y].ClearFoldingMarkers();
-            //
-            tb.
         }
 
         void OnSelectionChanged()

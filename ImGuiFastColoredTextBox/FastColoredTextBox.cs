@@ -4576,8 +4576,7 @@ namespace FastColoredTextBoxNS
                 //
                 //draw bookmark
                 if (bookmarksByLineIndex.ContainsKey(iLine))
-                    bookmarksByLineIndex[iLine].Paint(e.Graphics,
-                                                      new Rectangle(LeftIndent, y, Width,
+                    bookmarksByLineIndex[iLine].Paint(new Rectangle(LeftIndent, y, Width,
                                                                     CharHeight*lineInfo.WordWrapStringsCount));
                 //OnPaintLine event
                 if (lineInfo.VisibleState == VisibleState.Visible)
@@ -6725,9 +6724,6 @@ namespace FastColoredTextBoxNS
                     if (maxIterations <= 0) break;
                 } while (range.GoRightThroughFolded()); //move caret right
             }
-
-            if (oldLeftBracketPosition != leftBracketPosition || oldRightBracketPosition != rightBracketPosition)
-                
         }
 
         /// <summary>

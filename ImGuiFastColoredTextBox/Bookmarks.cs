@@ -143,7 +143,6 @@ namespace FastColoredTextBoxNS
 
             items.Add(bookmark);
             counter++;
-            tb.
         }
 
         public override bool Contains(Bookmark item)
@@ -176,7 +175,6 @@ namespace FastColoredTextBoxNS
 
         public override bool Remove(Bookmark item)
         {
-            tb.
             return items.Remove(item);
         }
 
@@ -193,7 +191,6 @@ namespace FastColoredTextBoxNS
                 i--;
                 was = true;
             }
-            tb.
 
             return was;
         }
@@ -233,7 +230,6 @@ namespace FastColoredTextBoxNS
         {
             TB.Selection.Start = new Place(0, LineIndex);
             TB.DoRangeVisible(TB.Selection, true);
-            TB.
         }
 
         public Bookmark(FastColoredTextBox tb, string name, int lineIndex)
@@ -244,13 +240,14 @@ namespace FastColoredTextBoxNS
             Color = tb.BookmarkColor;
         }
 
-        public virtual void Paint(Graphics gr, Rectangle lineRect)
+        public virtual void Paint(Rectangle lineRect)
         {
             var size = TB.CharHeight - 1;
-            using (var brush = new LinearGradientBrush(new Rectangle(0, lineRect.Top, size, size), Color.White, Color, 45))
-                gr.FillEllipse(brush, 0, lineRect.Top, size, size);
-            using (var pen = new Pen(Color))
-                gr.DrawEllipse(pen, 0, lineRect.Top, size, size);
+            // TODO draw bookmark
+            //using (var brush = new LinearGradientBrush(new Rectangle(0, lineRect.Top, size, size), Color.White, Color, 45))
+            //    gr.FillEllipse(brush, 0, lineRect.Top, size, size);
+            //using (var pen = new Pen(Color))
+            //    gr.DrawEllipse(pen, 0, lineRect.Top, size, size);
         }
     }
 }

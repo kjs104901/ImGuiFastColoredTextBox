@@ -110,7 +110,7 @@ namespace FastColoredTextBoxNS
                     }
                     else
                     {
-                        deletedChar = ts[tb.Selection.Start.iLine][tb.Selection.Start.iChar - 1].c;
+                        deletedChar = ts[tb.Selection.Start.iLine][tb.Selection.Start.iChar - 1];
                         ts[tb.Selection.Start.iLine].RemoveAt(tb.Selection.Start.iChar - 1);
                         tb.Selection.Start = new Place(tb.Selection.Start.iChar - 1, tb.Selection.Start.iLine);
                     }
@@ -121,12 +121,12 @@ namespace FastColoredTextBoxNS
                         spaceCountNextTabStop = tb.TabLength;
 
                     for (int i = 0; i < spaceCountNextTabStop; i++)
-                        ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, new Char(' '));
+                        ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, ' ');
 
                     tb.Selection.Start = new Place(tb.Selection.Start.iChar + spaceCountNextTabStop, tb.Selection.Start.iLine);
                     break;
                 default:
-                    ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, new Char(c));
+                    ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, c);
                     tb.Selection.Start = new Place(tb.Selection.Start.iChar + 1, tb.Selection.Start.iLine);
                     break;
             }

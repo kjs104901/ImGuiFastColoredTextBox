@@ -51,7 +51,6 @@ namespace FastColoredTextBoxNS
             foreach (var item in items)
             {
                 LayoutHint(item);
-                item.HostPanel.
             }
         }
 
@@ -138,7 +137,6 @@ namespace FastColoredTextBoxNS
                     tb.LineInfos[i] = li;
                 }
                 tb.NeedRecalc();
-                tb.
                 tb.Select();
                 tb.ActiveControl = null;
             }
@@ -169,7 +167,6 @@ namespace FastColoredTextBoxNS
 
             tb.Select();
             tb.ActiveControl = null;
-            tb.
         }
 
         /// <summary>
@@ -291,8 +288,6 @@ namespace FastColoredTextBoxNS
         {
             Range.tb.DoRangeVisible(Range, true);
             Range.tb.DoVisibleRectangle(HostPanel.Bounds);
-            
-            Range.tb.
         }
 
         private Hint(Range range, Control innerControl, string text, bool inline, bool dock)
