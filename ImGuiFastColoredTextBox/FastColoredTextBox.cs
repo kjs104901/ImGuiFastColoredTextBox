@@ -1535,7 +1535,10 @@ namespace FastColoredTextBoxNS
         /// </summary>
         [Browsable(true)]
         [Description("It occurs after insert, delete, clear, undo and redo operations.")]
-        public new event EventHandler<TextChangedEventArgs> TextChanged;
+        public event EventHandler<TextChangedEventArgs> TextChanged;
+
+
+        public event EventHandler<KeyEventArgs> KeyDown;
 
         /// <summary>
         /// Fake event for correct data binding
@@ -7380,6 +7383,11 @@ window.status = ""#print"";
         /// This range contains changed area of text
         /// </summary>
         public Range ChangedRange { get; set; }
+    }
+    
+    public class KeyEventArgs : EventArgs
+    {
+        
     }
 
     public class TextChangingEventArgs : EventArgs

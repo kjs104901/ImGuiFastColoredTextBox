@@ -9,9 +9,6 @@ using System.Globalization;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
-using KEYS = System.Windows.Forms.Keys;
 
 namespace FastColoredTextBoxNS
 {

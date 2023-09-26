@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
-using System.Windows.Forms;
 
 namespace FastColoredTextBoxNS
 {
@@ -24,10 +23,11 @@ namespace FastColoredTextBoxNS
             tb.VisibleRangeChanged += OnTextBoxVisibleRangeChanged;
         }
 
-        protected virtual void OnTextBoxKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        protected virtual void OnTextBoxKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == System.Windows.Forms.Keys.Escape && e.Modifiers == System.Windows.Forms.Keys.None)
-                Clear();
+            //TODO 키처리
+            //if (e.KeyCode == System.Windows.Forms.Keys.Escape && e.Modifiers == System.Windows.Forms.Keys.None)
+            //    Clear();
         }
 
         protected virtual void OnTextBoxTextChanged(object sender, TextChangedEventArgs e)
