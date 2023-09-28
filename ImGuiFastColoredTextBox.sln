@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuiFastColoredTextBox", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuiFastColoredTextBoxDemo", "ImGuiFastColoredTextBoxDemo\ImGuiFastColoredTextBoxDemo.csproj", "{F8DD8385-63C8-4FCC-9359-38202B92EBE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BellEditor", "BellEditor\BellEditor.csproj", "{7DFE1999-8D93-4C77-8447-A27FFF2676B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{56491780-4B73-4E3D-B5E5-FAE92DB56B8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuiBellEditor", "ImGuiBellEditor\ImGuiBellEditor.csproj", "{769B0EC1-99E6-48D6-AFB3-2B47250B11F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{F8DD8385-63C8-4FCC-9359-38202B92EBE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8DD8385-63C8-4FCC-9359-38202B92EBE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8DD8385-63C8-4FCC-9359-38202B92EBE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DFE1999-8D93-4C77-8447-A27FFF2676B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DFE1999-8D93-4C77-8447-A27FFF2676B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DFE1999-8D93-4C77-8447-A27FFF2676B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DFE1999-8D93-4C77-8447-A27FFF2676B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56491780-4B73-4E3D-B5E5-FAE92DB56B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56491780-4B73-4E3D-B5E5-FAE92DB56B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56491780-4B73-4E3D-B5E5-FAE92DB56B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56491780-4B73-4E3D-B5E5-FAE92DB56B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{769B0EC1-99E6-48D6-AFB3-2B47250B11F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769B0EC1-99E6-48D6-AFB3-2B47250B11F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769B0EC1-99E6-48D6-AFB3-2B47250B11F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769B0EC1-99E6-48D6-AFB3-2B47250B11F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
