@@ -3,7 +3,9 @@
 public struct Text
 {
     private readonly List<Line> _lines = new();
-    private bool _needUpdate = false;
+    private readonly List<LineView> _lineViews = new();
+    
+    private bool _dirty = false;
 
     public Text()
     {

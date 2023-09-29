@@ -5,37 +5,6 @@ SetPlatformIme
 http://www.cvi.kr/xe/cvi_lecture/3781
 https://m.blog.naver.com/cstudykr/220433199180
 
-//// Inputs
- KeyboardInput
- ViewInput
- MouseInput
-
-데이터 
-text
-마커
-Glyph
-Line
-
-외부 공개 -> backend 인터페이스로 만들어서 구현
-데이터 세팅 함수
-옵션 세팅 함수
-클립보드 콜백(save load)
-액션 
-(
-    find => 결과 리스트
-    find 취소
-    goto
-)
-draw 콜백
-(
-    메인 커서(IME 조합 위치)
-    라인 (위치, 줄, 선택 여부, find 결과, 마커, highlighter (범위 + 스타일 index), 자동완성 리스트, wrapped, 커서)
-)
-draw 사이즈 체크
-(
-    문자 한개
-)
-사이즈 캐시 무효화
 
 언어 정의 콜백 -> 콜백이 아니라 인터페이스로 정의. vscode 참고할 것
 (

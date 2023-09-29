@@ -13,7 +13,8 @@ public enum WrapMode
 public class TextEditor
 {
     // Data
-    public Text Text { get; set; }
+    public Page Page { get; set; }
+    public PageView PageView { get; set; }
     public AutoComplete AutoComplete { get; set; }
     
     // Options
@@ -24,13 +25,25 @@ public class TextEditor
     public float LineHeaderWidth { get; set; } = 0.0f;
     public bool SyntaxHighlight { get; set; } = true;
     public bool SyntaxFolding { get; set; } = true;
+    public Language Language { get; set; } = Language.PlainText();
     
+    // Backend
     private IBackend _backend;
-    public ILanguage Language { get; set; } = new DefaultLanguage();
     
     public TextEditor(IBackend backend)
     {
         _backend = backend;
+    }
+    
+    // Actions
+    public List<uint> FindText(string text)
+    {
+        return new();
+    }
+
+    public bool Goto(uint lineNumber)
+    {
+        return true;
     }
     
     // Input

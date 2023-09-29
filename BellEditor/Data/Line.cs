@@ -1,12 +1,18 @@
 ﻿namespace BellEditor.Data;
 
-public struct Line
+public struct LineView
+{
+    public Line Line;
+    public uint Index;
+}
+
+public class Line
 {
     private uint _index = 0;
     private List<Glyph> _glyphs = new();
 
     private bool _visible = false;
-    private bool _collapsed = false;
+    private bool _folded = false;
 
     private List<uint> _cutoffs = new List<uint>();
 
@@ -20,7 +26,7 @@ public struct Line
     
     private Marker _marker = Marker.None;
     
-    private bool _needUpdate = false;
+    private bool _dirty = false;
 
     public Line()
     {
