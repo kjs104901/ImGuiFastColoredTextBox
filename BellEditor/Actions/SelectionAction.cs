@@ -1,14 +1,22 @@
-﻿namespace BellEditor.Actions;
+﻿using BellEditor.Data;
 
+namespace BellEditor.Actions;
 
 internal class SetSelectionAction : Action
 {
+    private readonly Selection _selection;
+    
+    public SetSelectionAction(Selection selection)
+    {
+        _selection = selection;
+    }
+    
     public override void Do(TextEditor textEditor)
     {
     }
 }
 
-internal class AddSelectionAction : Action
+internal class RemoveSelectionRangeAction : Action
 {
     public override void Do(TextEditor textEditor)
     {

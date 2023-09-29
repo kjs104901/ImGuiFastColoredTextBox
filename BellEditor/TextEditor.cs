@@ -19,7 +19,8 @@ public class TextEditor
     public AutoComplete AutoComplete { get; set; }
     
     // Action
-    private ActionHistory _actionHistory;
+    private ActionSetHistory _actionSetHistory;
+    private Selection _selection;
     
     // Options
     public bool AutoIndent { get; set; } = true;
@@ -65,34 +66,99 @@ public class TextEditor
 
     private void DoAction(Action action)
     {
-        action.Do(this);
-        _actionHistory.AddHistory(action);
+        ActionSet actionSet = new ActionSet();
+        actionSet.Add(action);
+        
+        DoActionSet(actionSet);
+    }
+    
+    private void DoActionSet(ActionSet actionSet)
+    {
+        actionSet.Do(this);
+        _actionSetHistory.AddHistory(actionSet);
     }
 
     private void ProcessKeyboardInput(KeyboardInput keyboardInput)
     {
         var hk = keyboardInput.HotKeys;
 
-        if (hk.HasFlag(HotKeys.Ctrl | HotKeys.Z))
-            DoSomething(); // Undo
-        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.Y))
-            DoSomething(); // Redo
-        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.C))
-            DoSomething(); // copy
-        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.A))
-            DoSomething(); // All
-        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.V))
-            DoSomething(); // Paste
-        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.X))
-            DoSomething(); // Cut
-        else if (hk.HasFlag(HotKeys.Delete))
-            DoSomething(); // Delete
-        else if (hk.HasFlag(HotKeys.Backspace))
-            DoSomething(); // Backspace
-        else if (hk.HasFlag(HotKeys.Enter))
-            DoSomething(); // Enter
-        else if (hk.HasFlag(HotKeys.Tab))
-            DoSomething(); // Tab
+        if (hk.HasFlag(HotKeys.Ctrl | HotKeys.Z)) // Undo
+            _actionSetHistory.Undo();
+        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.Y)) // Redo
+            _actionSetHistory.Redo();
+        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.C)) // copy
+            DoAction(new CopyAction());
+        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.V)) // Paste
+            DoAction(new PasteAction());
+        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.X)) // Cut
+            DoAction(new CutAction());
+        else if (hk.HasFlag(HotKeys.Ctrl | HotKeys.A)) // Select All
+        {
+            DoAction(new SetSelectionAction(new() {
+                Begin = new Coordinates(0, 0),
+                Cursor = new Coordinates(10, 10), //TODO last line and last column
+            }));
+        }
+        else if (hk.HasFlag(HotKeys.Delete)) // Delete
+        {
+            ActionSet actionSet = new();
+            if (_selection.HasRange)
+            {
+                actionSet.Add(new DeleteSelectionAction());
+                actionSet.Add(new RemoveSelectionRangeAction());
+            }
+            else
+            {
+                actionSet.Add(new DeleteForwardAction());
+            }
+            DoActionSet(actionSet);
+        }
+        else if (hk.HasFlag(HotKeys.Backspace)) // Backspace
+        {
+            ActionSet actionSet = new();
+            if (_selection.HasRange)
+            {
+                actionSet.Add(new DeleteSelectionAction());
+                actionSet.Add(new RemoveSelectionRangeAction());
+            }
+            else
+            {
+                actionSet.Add(new DeleteBackwardAction());
+            }
+            DoActionSet(actionSet);
+        }
+        else if (hk.HasFlag(HotKeys.Enter)) // Enter
+        {
+            ActionSet actionSet = new();
+            if (_selection.HasRange)
+            {
+                actionSet.Add(new DeleteSelectionAction());
+                actionSet.Add(new RemoveSelectionRangeAction());
+            }
+            actionSet.Add(new InputChar('\n'));
+            DoActionSet(actionSet);
+        }
+        else if (hk.HasFlag(HotKeys.Tab)) // Tab
+        {
+            ActionSet actionSet = new();
+            if (_selection.HasRange)
+            {
+                actionSet.Add(new IndentSelection());
+            }
+            else
+            {
+                actionSet.Add(new InputChar('\t'));
+            }
+            DoActionSet(actionSet);
+        }
+        else if (hk.HasFlag(HotKeys.Shift | HotKeys.UpArrow))
+            DoSomething(); // Select Up
+        else if (hk.HasFlag(HotKeys.Shift | HotKeys.DownArrow))
+            DoSomething(); // Select Down
+        else if (hk.HasFlag(HotKeys.Shift | HotKeys.LeftArrow))
+            DoSomething(); // Select Left
+        else if (hk.HasFlag(HotKeys.Shift | HotKeys.RightArrow))
+            DoSomething(); // Select Right
         else if (hk.HasFlag(HotKeys.UpArrow))
             DoSomething(); // UpArrow
         else if (hk.HasFlag(HotKeys.DownArrow))

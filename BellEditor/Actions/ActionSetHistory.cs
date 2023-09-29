@@ -1,20 +1,20 @@
 ﻿namespace BellEditor.Actions;
 
-internal struct ActionHistory
+internal struct ActionSetHistory
 {
     private const int MaxHistoryCount = 100;
     
-    private readonly LinkedList<EditAction> _history = new();
+    private readonly LinkedList<ActionSet> _history = new();
 
-    public ActionHistory()
+    public ActionSetHistory()
     {
     }
 
-    public void AddHistory(Action action)
+    public void AddHistory(ActionSet actionSet)
     {
-        if (action is EditAction editAction)
+        if (actionSet.HasEditAction)
         {
-            _history.AddLast(editAction);
+            _history.AddLast(actionSet);
             if (_history.Count > MaxHistoryCount)
             {
                 _history.RemoveFirst();
