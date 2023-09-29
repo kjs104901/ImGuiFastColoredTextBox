@@ -1,6 +1,7 @@
-﻿using BellEditor.Data;
+﻿using BellEditor.Actions;
+using BellEditor.Data;
 using BellEditor.Inputs;
-using BellEditor.Language;
+using Action = BellEditor.Actions.Action;
 
 namespace BellEditor;
 
@@ -16,6 +17,9 @@ public class TextEditor
     public Page Page { get; set; }
     public PageView PageView { get; set; }
     public AutoComplete AutoComplete { get; set; }
+    
+    // Action
+    private ActionHistory _actionHistory;
     
     // Options
     public bool AutoIndent { get; set; } = true;
@@ -57,6 +61,12 @@ public class TextEditor
     private void DoSomething()
     {
         
+    }
+
+    private void DoAction(Action action)
+    {
+        action.Do(this);
+        _actionHistory.AddHistory(action);
     }
 
     private void ProcessKeyboardInput(KeyboardInput keyboardInput)

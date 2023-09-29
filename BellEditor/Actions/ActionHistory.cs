@@ -1,13 +1,14 @@
-﻿using BellEditor.Actions;
-using Action = BellEditor.Actions.Action;
+﻿namespace BellEditor.Actions;
 
-namespace BellEditor;
-
-internal class ActionHistory
+internal struct ActionHistory
 {
     private const int MaxHistoryCount = 100;
     
     private readonly LinkedList<EditAction> _history = new();
+
+    public ActionHistory()
+    {
+    }
 
     public void AddHistory(Action action)
     {
