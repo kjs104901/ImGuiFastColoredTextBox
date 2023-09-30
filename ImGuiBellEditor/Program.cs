@@ -49,8 +49,8 @@ public static class Program
             };
 
             var editor = new TextEditor(new ImGuiTextEditorBackend());
+            editor.Page.Text.Set("Hello World\nNext Line\n한글");
             
-        
             var config = ImGuiNative.ImFontConfig_ImFontConfig();
             var imFontPtr = ImGui.GetIO().Fonts.AddFontFromFileTTF(@"gulim.ttc", 13.0f, config, ImGui.GetIO().Fonts.GetGlyphRangesKorean());
             ImGuiNative.ImFontConfig_destroy(config);

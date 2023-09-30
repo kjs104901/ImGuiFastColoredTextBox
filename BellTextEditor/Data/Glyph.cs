@@ -2,11 +2,11 @@
 
 public struct Glyph
 {
-    private readonly char _char;
+    public readonly char Char;
     private Style? _style = null;
     
     public Glyph(char c)
     {
-        _char = c;
+        Char = c;
     }
 }

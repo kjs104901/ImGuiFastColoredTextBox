@@ -1,4 +1,6 @@
-﻿namespace Bell.Data;
+﻿using Bell.Render;
+
+namespace Bell.Data;
 
 public struct LineView
 {
@@ -30,5 +32,25 @@ public class Line
 
     public Line()
     {
+    }
+
+    public void Set(string line)
+    {
+        _glyphs.Clear();
+        foreach (char c in line)
+        {
+            _glyphs.Add(new Glyph(c));
+        }
+    }
+
+    public LineRender GetRender()
+    {
+        var lineRender = new LineRender();
+        lineRender.Text = "";
+        foreach (Glyph glyph in _glyphs)
+        {
+            lineRender.Text += glyph.Char;
+        }
+        return lineRender;
     }
 }

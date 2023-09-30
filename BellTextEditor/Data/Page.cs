@@ -2,7 +2,7 @@
 
 namespace Bell.Data;
 
-public struct Page
+public class Page
 {
     public Text Text = new();
     
@@ -25,10 +25,6 @@ public struct Page
     private uint _viewLineEnd = 0;
     private bool _viewLineDirty = false;
     
-    public Page()
-    {
-    }
-
     public void UpdateView(ViewCoordinates start, ViewCoordinates end)
     {
         _viewStart = start;

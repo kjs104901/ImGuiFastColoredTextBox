@@ -2,15 +2,11 @@
 
 namespace Bell.Actions;
 
-internal struct ActionSetHistory
+internal class ActionSetHistory
 {
     private const int Capacity = 1000;
     private readonly LinkedList<ActionSet> _history = new();
     private readonly LinkedList<ActionSet> _redoHistory = new();
-
-    public ActionSetHistory()
-    {
-    }
 
     public void AddHistory(ActionSet actionSet)
     {

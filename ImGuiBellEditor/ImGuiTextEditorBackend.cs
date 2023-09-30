@@ -19,7 +19,12 @@ public class ImGuiTextEditorBackend : ITextEditorBackend
 
     public void Render(TextEditor textEditor, List<LineRender> lineRenders)
     {
-        ImGui.Text($"THIS IS EDITOR RENDER");
+        ImGui.Text("----- textEditor start -----");
+        foreach (LineRender lineRender in lineRenders)
+        {
+            ImGui.Text(lineRender.Text);
+        }
+        ImGui.Text("----- textEditor end -----");
     }
 
     public (float, float) GetRenderSize(char c)

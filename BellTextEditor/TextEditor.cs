@@ -16,7 +16,7 @@ public enum WrapMode
 public class TextEditor
 {
     // Data
-    public Page Page { get; set; }
+    public Page Page { get; set; } = new();
     public AutoComplete AutoComplete { get; set; }
     
     // Action
@@ -64,7 +64,7 @@ public class TextEditor
 
     public void Render()
     {
-        _textEditorBackend.Render(this, null);
+        _textEditorBackend.Render(this, Page.Text.GetRender());
     }
     
     // Input
