@@ -1,4 +1,6 @@
-﻿namespace Bell.Actions;
+﻿using System.Text;
+
+namespace Bell.Actions;
 
 internal struct ActionSet
 {
@@ -33,4 +35,9 @@ internal struct ActionSet
     }
 
     public bool HasEditAction => _actions.Any(a => a is EditAction);
+
+    public string GetDebugString()
+    {
+        return string.Join(",", _actions.Select(a => a.GetType().ToString()));
+    }
 }
