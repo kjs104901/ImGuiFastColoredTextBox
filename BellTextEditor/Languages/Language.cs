@@ -1,6 +1,6 @@
 ﻿using Bell.Data;
 
-namespace Bell.Language;
+namespace Bell.Languages;
 
 public partial class Language
 {

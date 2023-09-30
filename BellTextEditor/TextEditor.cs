@@ -2,13 +2,15 @@
 using Bell.Coordinates;
 using Bell.Data;
 using Bell.Inputs;
+using Bell.Languages;
 
 namespace Bell;
 
 public enum WrapMode
 {
     None,
-    Word
+    Word,
+    BreakWord
 }
 
 public class TextEditor
@@ -28,13 +30,8 @@ public class TextEditor
     public WrapMode WrapMode { get; set; } = WrapMode.Word;
     public bool SyntaxHighlighting { get; set; } = true;
     public bool SyntaxFolding { get; set; } = true;
-    public Language.Language Language { get; set; } = Bell.Language.Language.PlainText();
-
-    public bool LineNumberVisible { get; set; } = true;
-    public float LineNumberWidth { get; set; } = 20.0f;
-    
-    public bool MarkerVisible { get; set; } = true;
-    public float MarkerWidth { get; set; } = 10.0f;
+    public Language Language { get; set; } = Language.PlainText();
+    public int FontSize { get; set; } //TODO cache by size
     
     // Backend
     private ITextEditorBackend _textEditorBackend;
@@ -294,31 +291,49 @@ public class TextEditor
     
     private void ProcessMouseInput(HotKeys hk, MouseInput mouseInput)
     {
-        TextCoordinates mouse = new TextCoordinates(); //TODO find coordinates
-        
+        ViewCoordinates viewCoordinates = new(mouseInput.X, mouseInput.Y);
+        if (false == viewCoordinates.ToPageCoordinates(
+                Page,
+                out PageCoordinates pageCoordinates,
+                out bool isLine, out bool isMarker))
+        {
+            return;
+        }
+
+        if (isMarker)
+        {
+            //TODO find line and fold unfold
+
+            return;
+        }
+
+        if (false == pageCoordinates.ToTextCoordinates(
+                Page.Text,
+                out TextCoordinates textCoordinates))
+        {
+            return;
+        }
+
         if (MouseKey.Click == mouseInput.MouseKey)
         {
             if (hk.HasFlag(HotKeys.Shift))
             {
-                DoAction(new MoveCursorSelectionAction(mouse));
+                DoAction(new MoveCursorSelectionAction(textCoordinates));
             }
             else
             {
                 ActionSet actionSet = new();
-                actionSet.Add(new MoveCursorSelectionAction(mouse));
-                actionSet.Add(new MoveCursorOriginAction(mouse));
+                actionSet.Add(new MoveCursorSelectionAction(textCoordinates));
+                actionSet.Add(new MoveCursorOriginAction(textCoordinates));
                 DoActionSet(actionSet);
-                
-                // TODO check range. check if marker header
             }
         }
         else if (MouseKey.DoubleClick == mouseInput.MouseKey)
         {
-            // TODO check range.
             if (hk.HasFlag(HotKeys.Shift)) // Select Line
             {
                 ActionSet actionSet = new();
-                actionSet.Add(new MoveCursorOriginAction(mouse));
+                actionSet.Add(new MoveCursorOriginAction(textCoordinates));
                 
                 actionSet.Add(new MoveCursorSelectionAction(CursorMove.StartOfLine));
                 actionSet.Add(new MoveCursorOriginAction(CursorMove.EndOfLine));
@@ -327,7 +342,7 @@ public class TextEditor
             else // Select word
             {
                 ActionSet actionSet = new();
-                actionSet.Add(new MoveCursorOriginAction(mouse));
+                actionSet.Add(new MoveCursorOriginAction(textCoordinates));
                 
                 actionSet.Add(new MoveCursorSelectionAction(CursorMove.StartOfWord));
                 actionSet.Add(new MoveCursorOriginAction(CursorMove.EndOfWord));
@@ -336,13 +351,14 @@ public class TextEditor
         }
         else if (MouseKey.Dragging == mouseInput.MouseKey)
         {
-            // TODO check range.
-            DoAction(new MoveCursorSelectionAction(mouse));
+            DoAction(new MoveCursorSelectionAction(textCoordinates));
         }
     }
 
     private void ProcessViewInput(ViewInput viewInput)
     {
-        // update view of editor
+        ViewCoordinates start = new (viewInput.X, viewInput.Y);
+        ViewCoordinates end = new (viewInput.X + viewInput.W, viewInput.Y + viewInput.H);
+        Page.UpdateView(start, end);
     }
 }

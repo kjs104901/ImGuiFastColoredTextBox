@@ -1,5 +1,4 @@
-﻿using Bell.Data;
-using Bell.Render;
+﻿using Bell.Render;
 
 namespace Bell;
 
@@ -9,7 +8,5 @@ public interface ITextEditorBackend
     public string GetClipboard();
 
     public void Render(TextEditor textEditor, List<LineRender> lineRenders);
-
-    public event EventHandler OnRenderSizeChanged;
     public ValueTuple<float, float> GetRenderSize(char c);
 }

@@ -22,7 +22,6 @@ public class ImGuiTextEditorBackend : ITextEditorBackend
         ImGui.Text($"THIS IS EDITOR RENDER");
     }
 
-    public event EventHandler? OnRenderSizeChanged;
     public (float, float) GetRenderSize(char c)
     {
         return ValueTuple.Create(10.0f, 5.0f);
