@@ -12,7 +12,7 @@ public class Page
     public float Height { get; private set; } = 0.0f;
     
     public bool LineNumberVisible { get; set; } = true;
-    public float LineNumberWidth { get; set; } = 20.0f;
+    public float LineNumberWidth { get; set; } = 20.0f; // TODO auto calculate + set padding
     
     public bool MarkerVisible { get; set; } = true;
     public float MarkerWidth { get; set; } = 10.0f;

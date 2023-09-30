@@ -31,7 +31,7 @@ public class TextEditor
     public bool SyntaxHighlighting { get; set; } = true;
     public bool SyntaxFolding { get; set; } = true;
     public Language Language { get; set; } = Language.PlainText();
-    public int FontSize { get; set; } //TODO cache by size
+    public int FontSize { get; set; } //TODO cache by size or just get # char size to check
     
     // Backend
     private ITextEditorBackend _textEditorBackend;
