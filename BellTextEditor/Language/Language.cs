@@ -1,6 +1,8 @@
-﻿namespace BellEditor.Data;
+﻿using Bell.Data;
 
-public class Language
+namespace Bell.Language;
+
+public partial class Language
 {
     public List<string> LineComments = new();
     public List<ValueTuple<string, string>> BlockComments = new();
@@ -11,9 +13,4 @@ public class Language
     public List<ValueTuple<string, Style>> KeywordsStyle = new();
     
     public string AutoIndentPattern = "";
-    
-    public static Language PlainText()
-    {
-        return new Language();
-    }
 }

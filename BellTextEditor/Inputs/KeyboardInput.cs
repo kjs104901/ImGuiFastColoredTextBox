@@ -1,4 +1,4 @@
-﻿namespace BellEditor.Inputs;
+﻿namespace Bell.Inputs;
 
 [Flags]
 public enum HotKeys : uint
@@ -36,5 +36,5 @@ public enum HotKeys : uint
 public struct KeyboardInput
 {
     public HotKeys HotKeys;
-    public char[] Keys;
+    public char[] Chars;
 }

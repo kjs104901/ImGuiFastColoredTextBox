@@ -1,4 +1,4 @@
-﻿namespace BellEditor.Inputs;
+﻿namespace Bell.Inputs;
 
 public struct ViewInput
 {

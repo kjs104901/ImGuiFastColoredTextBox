@@ -1,4 +1,4 @@
-﻿namespace BellEditor.Data;
+﻿namespace Bell.Data;
 
 public abstract class Style { }
 

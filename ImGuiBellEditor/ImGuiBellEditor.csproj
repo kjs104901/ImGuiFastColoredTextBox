@@ -5,6 +5,17 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\BellTextEditor\BellTextEditor.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ImGui.NET" Version="1.89.7.1" />
+      <PackageReference Include="Veldrid" Version="4.9.0" />
+      <PackageReference Include="Veldrid.ImGui" Version="5.89.2-ga121087cad" />
+      <PackageReference Include="Veldrid.StartupUtilities" Version="4.9.0" />
+    </ItemGroup>
 </Project>

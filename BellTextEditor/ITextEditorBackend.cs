@@ -1,13 +1,14 @@
-﻿using BellEditor.Data;
+﻿using Bell.Data;
+using Bell.Render;
 
-namespace BellEditor;
+namespace Bell;
 
-public interface IBackend
+public interface ITextEditorBackend
 {
     public void SetClipboard(string text);
     public string GetClipboard();
 
-    public void Render(List<Selection> selections, List<LineDraw> lineDraws);
+    public void Render(TextEditor textEditor, List<LineRender> lineRenders);
 
     public event EventHandler OnRenderSizeChanged;
     public ValueTuple<float, float> GetRenderSize(char c);

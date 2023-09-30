@@ -1,4 +1,4 @@
-﻿namespace BellEditor.Actions;
+﻿namespace Bell.Actions;
 
 internal struct ActionSet
 {

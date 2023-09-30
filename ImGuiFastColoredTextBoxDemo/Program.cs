@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using ImGuiColorTextEditNet;
-//using ImGuiFastColoredTextBox;
 using ImGuiNET;
 using Veldrid;
 using Veldrid.StartupUtilities;

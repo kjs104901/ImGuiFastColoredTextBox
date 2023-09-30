@@ -1,4 +1,4 @@
-﻿namespace BellEditor.Actions;
+﻿namespace Bell.Actions;
 
 // InputChar
 // InputString
@@ -9,8 +9,10 @@
 // IndentSelection
 // DeleteSelection
 
-// InsertLine
-// MergeLine
+// SplitLine
+// MergeForwardLine
+// MergeBackwardLine
+// DeleteLine
 
 /* undo 정보
     public string? Added;
@@ -77,6 +79,17 @@ internal class DeleteForwardAction : EditAction
 }
 
 internal class DeleteBackwardAction : EditAction
+{
+    public override void Do(TextEditor textEditor)
+    {
+    }
+
+    public override void Undo(TextEditor textEditor)
+    {
+    }
+}
+
+internal class DeleteLineAction : EditAction
 {
     public override void Do(TextEditor textEditor)
     {

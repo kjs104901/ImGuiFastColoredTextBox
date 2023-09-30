@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuiFastColoredTextBox", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImGuiFastColoredTextBoxDemo", "ImGuiFastColoredTextBoxDemo\ImGuiFastColoredTextBoxDemo.csproj", "{F8DD8385-63C8-4FCC-9359-38202B92EBE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BellEditor", "BellEditor\BellEditor.csproj", "{7DFE1999-8D93-4C77-8447-A27FFF2676B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BellTextEditor", "BellTextEditor\BellTextEditor.csproj", "{7DFE1999-8D93-4C77-8447-A27FFF2676B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{56491780-4B73-4E3D-B5E5-FAE92DB56B8E}"
 EndProject
