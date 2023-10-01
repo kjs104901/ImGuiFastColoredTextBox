@@ -1,6 +1,6 @@
 ﻿using Bell.Coordinates;
 
-namespace Bell.Actions;
+namespace Bell.Commands;
 
 internal enum CursorMove
 {
@@ -25,17 +25,17 @@ internal enum CursorMove
     Selection
 }
 
-internal class MoveCursorSelectionAction : Action
+internal class MoveCursorSelectionCommands : Commands
 {
     private CursorMove _cursorMove = CursorMove.None;
     private TextCoordinates _textCoordinates;
     
-    public MoveCursorSelectionAction(CursorMove cursorMove)
+    public MoveCursorSelectionCommands(CursorMove cursorMove)
     {
         _cursorMove = cursorMove;
     }
     
-    public MoveCursorSelectionAction(TextCoordinates textCoordinates)
+    public MoveCursorSelectionCommands(TextCoordinates textCoordinates)
     {
         _textCoordinates = textCoordinates;
     }
@@ -45,17 +45,17 @@ internal class MoveCursorSelectionAction : Action
     }
 }
 
-internal class MoveCursorOriginAction : Action
+internal class MoveCursorOriginCommands : Commands
 {
     private CursorMove _cursorMove = CursorMove.None;
     private TextCoordinates _textCoordinates;
     
-    public MoveCursorOriginAction(CursorMove cursorMove)
+    public MoveCursorOriginCommands(CursorMove cursorMove)
     {
         _cursorMove = cursorMove;
     }
     
-    public MoveCursorOriginAction(TextCoordinates textCoordinates)
+    public MoveCursorOriginCommands(TextCoordinates textCoordinates)
     {
         _textCoordinates = textCoordinates;
     }

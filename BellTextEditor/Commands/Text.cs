@@ -1,4 +1,4 @@
-﻿namespace Bell.Actions;
+﻿namespace Bell.Commands;
 
 // InputChar
 // InputString
@@ -28,7 +28,7 @@
 
  */
 
-internal class InputChar : EditAction
+internal class InputChar : EditCommands
 {
     private char _c;
     public InputChar(char c)
@@ -45,7 +45,7 @@ internal class InputChar : EditAction
     }
 }
 
-internal class IndentSelection : EditAction
+internal class IndentSelection : EditCommands
 {
     public override void Do(TextEditor textEditor)
     {
@@ -56,7 +56,7 @@ internal class IndentSelection : EditAction
     }
 }
 
-internal class DeleteSelectionAction : EditAction
+internal class DeleteSelectionCommands : EditCommands
 {
     public override void Do(TextEditor textEditor)
     {
@@ -67,7 +67,7 @@ internal class DeleteSelectionAction : EditAction
     }
 }
 
-internal class DeleteForwardAction : EditAction
+internal class DeleteForwardCommands : EditCommands
 {
     public override void Do(TextEditor textEditor)
     {
@@ -78,7 +78,7 @@ internal class DeleteForwardAction : EditAction
     }
 }
 
-internal class DeleteBackwardAction : EditAction
+internal class DeleteBackwardCommands : EditCommands
 {
     public override void Do(TextEditor textEditor)
     {
@@ -89,7 +89,26 @@ internal class DeleteBackwardAction : EditAction
     }
 }
 
-internal class DeleteLineAction : EditAction
+internal class DeleteLineCommands : EditCommands
+{
+    public override void Do(TextEditor textEditor)
+    {
+    }
+
+    public override void Undo(TextEditor textEditor)
+    {
+    }
+}
+
+
+internal class CopyCommands : Commands
+{
+    public override void Do(TextEditor textEditor)
+    {
+    }
+}
+
+internal class PasteCommands : EditCommands
 {
     public override void Do(TextEditor textEditor)
     {
