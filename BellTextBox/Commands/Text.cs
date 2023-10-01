@@ -28,7 +28,7 @@
 
  */
 
-internal class InputChar : EditCommands
+internal class InputChar : EditCommand
 {
     private char _c;
     public InputChar(char c)
@@ -45,7 +45,7 @@ internal class InputChar : EditCommands
     }
 }
 
-internal class IndentSelection : EditCommands
+internal class IndentSelection : EditCommand
 {
     public override void Do(TextBox textBox)
     {
@@ -56,7 +56,7 @@ internal class IndentSelection : EditCommands
     }
 }
 
-internal class DeleteSelectionCommands : EditCommands
+internal class DeleteSelectionCommand : EditCommand
 {
     public override void Do(TextBox textBox)
     {
@@ -67,7 +67,7 @@ internal class DeleteSelectionCommands : EditCommands
     }
 }
 
-internal class DeleteForwardCommands : EditCommands
+internal class DeleteForwardCommand : EditCommand
 {
     public override void Do(TextBox textBox)
     {
@@ -78,7 +78,7 @@ internal class DeleteForwardCommands : EditCommands
     }
 }
 
-internal class DeleteBackwardCommands : EditCommands
+internal class DeleteBackwardCommand : EditCommand
 {
     public override void Do(TextBox textBox)
     {
@@ -89,7 +89,7 @@ internal class DeleteBackwardCommands : EditCommands
     }
 }
 
-internal class DeleteLineCommands : EditCommands
+internal class DeleteLineCommand : EditCommand
 {
     public override void Do(TextBox textBox)
     {
@@ -101,14 +101,14 @@ internal class DeleteLineCommands : EditCommands
 }
 
 
-internal class CopyCommands : Commands
+internal class CopyCommand : Command
 {
     public override void Do(TextBox textBox)
     {
     }
 }
 
-internal class PasteCommands : EditCommands
+internal class PasteCommand : EditCommand
 {
     public override void Do(TextBox textBox)
     {

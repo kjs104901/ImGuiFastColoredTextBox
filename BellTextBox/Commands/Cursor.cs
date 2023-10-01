@@ -25,17 +25,17 @@ internal enum CursorMove
     Selection
 }
 
-internal class MoveCursorSelectionCommands : Commands
+internal class MoveCursorSelectionCommand : Command
 {
     private CursorMove _cursorMove = CursorMove.None;
     private TextCoordinates _textCoordinates;
     
-    public MoveCursorSelectionCommands(CursorMove cursorMove)
+    public MoveCursorSelectionCommand(CursorMove cursorMove)
     {
         _cursorMove = cursorMove;
     }
     
-    public MoveCursorSelectionCommands(TextCoordinates textCoordinates)
+    public MoveCursorSelectionCommand(TextCoordinates textCoordinates)
     {
         _textCoordinates = textCoordinates;
     }
@@ -45,17 +45,17 @@ internal class MoveCursorSelectionCommands : Commands
     }
 }
 
-internal class MoveCursorOriginCommands : Commands
+internal class MoveCursorOriginCommand : Command
 {
     private CursorMove _cursorMove = CursorMove.None;
     private TextCoordinates _textCoordinates;
     
-    public MoveCursorOriginCommands(CursorMove cursorMove)
+    public MoveCursorOriginCommand(CursorMove cursorMove)
     {
         _cursorMove = cursorMove;
     }
     
-    public MoveCursorOriginCommands(TextCoordinates textCoordinates)
+    public MoveCursorOriginCommand(TextCoordinates textCoordinates)
     {
         _textCoordinates = textCoordinates;
     }

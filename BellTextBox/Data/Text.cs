@@ -4,43 +4,40 @@ namespace Bell.Data;
 
 public class Text
 {
+    private readonly TextBox _textBox;
+    
     private readonly List<Line> _lines = new();
-    private readonly List<LineView> _lineViews = new();
-    private bool _viewDirty = false;
 
-    private readonly List<LineRender> _lineRenders = new();
-    private bool _renderDirty = false;
+    public List<LineRender> LineRenders => _lineRendersCache.Get();
+    private readonly Cache<List<LineRender>> _lineRendersCache;
+    
+    public Text(TextBox textBox)
+    {
+        _textBox = textBox;
+
+        _lineRendersCache = new Cache<List<LineRender>>(new List<LineRender>(), UpdateRender);
+    }
     
     public void Set(string text)
     {
         _lines.Clear();
         foreach (string lineText in text.Split("\n"))
         {
-            Line line = new Line();
-            line.Set(lineText);
+            Line line = new Line(_textBox);
+            line.SetString(lineText);
             _lines.Add(line);
         }
-        _viewDirty = true;
-        _renderDirty = true;
+        _lineRendersCache.SetDirty();
     }
 
-    public List<LineRender> GetRender()
+    private List<LineRender> UpdateRender(List<LineRender> lineRenders)
     {
-        UpdateRender();
-        return _lineRenders;
-    }
-
-    private void UpdateRender()
-    {
-        if (_renderDirty)
+        lineRenders.Clear();
+        foreach (Line line in _lines)
         {
-            _lineRenders.Clear();
-            foreach (Line line in _lines)
-            {
-                _lineRenders.Add(line.GetRender());
-            }
-            _renderDirty = false;
+            lineRenders.Add(line.GetRender());
         }
+        return lineRenders;
     }
 
     public override string ToString()

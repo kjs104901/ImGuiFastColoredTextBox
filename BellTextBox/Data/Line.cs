@@ -1,56 +1,111 @@
-﻿using Bell.Render;
+﻿using System.Runtime.InteropServices;
+using System.Text;
+using Bell.Render;
 
 namespace Bell.Data;
 
-public struct LineView
+[Flags]
+public enum Marker
 {
-    public Line Line;
-    public uint Index;
+    None = 0,
+    
+    Fold = 1 << 0,
+    Unfold = 1 << 1
 }
 
 public class Line
 {
-    private uint _index = 0;
-    private List<Glyph> _glyphs = new();
+    private readonly TextBox _textBox;
+    
+    public uint Index = 0;
+    
+    private List<char> _chars = new();
+    
+    public string String => _stringCache.Get();
+    private readonly Cache<string> _stringCache;
 
-    private bool _visible = false;
-    private bool _folded = false;
+    public Dictionary<uint, Style> Styles => _stylesCache.Get();
+    private readonly Cache<Dictionary<uint, Style>> _stylesCache;
+    
+    public bool Foldable => _foldableCache.Get();
+    private readonly Cache<bool> _foldableCache;
 
-    private List<uint> _cutoffs = new List<uint>();
+    public List<uint> Cutoffs => _cutoffsCache.Get();
+    private readonly Cache<List<uint>> _cutoffsCache;
 
-    public int ViewCount
+    public bool Visible = false;
+    public bool Folded = false;
+    
+    public int ViewCount => Visible ? Cutoffs.Count + 1 : 0;
+
+    private Marker Marker
     {
         get
         {
-            return 1;
+            if (Visible)
+            {
+                if (Folded)
+                    return Marker.Unfold;
+                if (Foldable)
+                    return Marker.Fold;
+            }
+            return Marker.None;
         }
     }
-    
-    private Marker _marker = Marker.None;
-    
-    private bool _dirty = false;
 
-    public Line()
+    public Line(TextBox textBox)
     {
+        _textBox = textBox;
+        _stylesCache = new(new(), UpdateStyles);
+        _cutoffsCache = new(new(), UpdateCutoff);
+        _foldableCache = new(false, UpdateFoldable);
+        _stringCache = new(string.Empty, UpdateString);
     }
 
-    public void Set(string line)
+    public void SetString(string line)
     {
-        _glyphs.Clear();
-        foreach (char c in line)
-        {
-            _glyphs.Add(new Glyph(c));
-        }
+        _chars.Clear();
+        _chars.AddRange(line);
+        
+        _foldableCache.SetDirty();
+        _stringCache.SetDirty();
     }
 
     public LineRender GetRender()
     {
         var lineRender = new LineRender();
-        lineRender.Text = "";
-        foreach (Glyph glyph in _glyphs)
-        {
-            lineRender.Text += glyph.Char;
-        }
+        lineRender.Text = String;
         return lineRender;
+    }
+
+    private Dictionary<uint, Style> UpdateStyles(Dictionary<uint, Style> styles)
+    {
+        //TODO
+        return styles;
+    }
+
+    private List<uint> UpdateCutoff(List<uint> cutoffs)
+    {
+        //TODO calculate cutoff
+        cutoffs.Clear();
+        return cutoffs;
+    }
+
+    private bool UpdateFoldable(bool _)
+    {
+        var trimmedString = String.TrimStart();
+        foreach (Block folding in _textBox.Language.Foldings)
+        {
+            if (trimmedString.StartsWith(folding.Start))
+                return true;
+        }
+        return false;
+    }
+
+    private string UpdateString(string _)
+    {
+        _textBox.StringBuilder.Clear();
+        _textBox.StringBuilder.Append(CollectionsMarshal.AsSpan(_chars));
+        return _textBox.ToString() ?? string.Empty;
     }
 }

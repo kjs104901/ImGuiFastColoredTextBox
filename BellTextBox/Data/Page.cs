@@ -4,18 +4,12 @@ namespace Bell.Data;
 
 public class Page
 {
-    public Text Text = new();
+    private readonly TextBox _textBox;
     
-    private bool _sizeDirty = false;
+    public readonly Text Text;
 
-    public float Width { get; private set; } = 0.0f;
-    public float Height { get; private set; } = 0.0f;
-    
-    public bool LineNumberVisible { get; set; } = true;
-    public float LineNumberWidth { get; set; } = 20.0f; // TODO auto calculate + set padding
-    
-    public bool MarkerVisible { get; set; } = true;
-    public float MarkerWidth { get; set; } = 10.0f;
+    public RectSize Size => _sizeCache.Get();
+    private readonly Cache<RectSize> _sizeCache;
     
     // View
     private ViewCoordinates _viewStart = new ();
@@ -24,6 +18,14 @@ public class Page
     private uint _viewLineStart = 0;
     private uint _viewLineEnd = 0;
     private bool _viewLineDirty = false;
+
+    public Page(TextBox textBox)
+    {
+        _textBox = textBox;
+        Text = new Text(_textBox);
+
+        _sizeCache = new Cache<RectSize>(new RectSize(), UpdateSize);
+    }
     
     public void UpdateView(ViewCoordinates start, ViewCoordinates end)
     {
@@ -31,5 +33,10 @@ public class Page
         _viewEnd = end;
         
         _viewLineDirty = true;
+    }
+
+    private RectSize UpdateSize(RectSize _)
+    {
+        return new();
     }
 }

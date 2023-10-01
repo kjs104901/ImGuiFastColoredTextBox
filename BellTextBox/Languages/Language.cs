@@ -5,12 +5,12 @@ namespace Bell.Languages;
 public partial class Language
 {
     public List<string> LineComments = new();
-    public List<ValueTuple<string, string>> BlockComments = new();
+    public List<Block> BlockComments = new();
 
-    public List<ValueTuple<string, string>> Foldings = new();
+    public List<Block> Foldings = new();
 
-    public List<ValueTuple<string, Style>> PatternsStyle = new();
-    public List<ValueTuple<string, Style>> KeywordsStyle = new();
+    public Dictionary<string, Style> PatternsStyle = new();
+    public Dictionary<string, Style> KeywordsStyle = new();
     
     public string AutoIndentPattern = "";
 }
