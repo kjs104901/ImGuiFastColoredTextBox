@@ -48,7 +48,7 @@ public static class Program
                 imguiRenderer.WindowResized(window.Width, window.Height);
             };
 
-            var editor = new TextEditor(new ImGuiTextEditorBackend());
+            var editor = new TextBox(new ImGuiTextBoxBackend());
             editor.Page.Text.Set("Hello World\nNext Line\n한글");
             
             var config = ImGuiNative.ImFontConfig_ImFontConfig();

@@ -2,11 +2,11 @@
 
 namespace Bell;
 
-public interface ITextEditorBackend
+public interface ITextBoxBackend
 {
     public void SetClipboard(string text);
     public string GetClipboard();
 
-    public void Render(TextEditor textEditor, List<LineRender> lineRenders);
+    public void Render(TextBox textBox, List<LineRender> lineRenders);
     public ValueTuple<float, float> GetRenderSize(char c);
 }

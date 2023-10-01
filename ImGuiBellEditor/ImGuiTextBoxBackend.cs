@@ -6,7 +6,7 @@ using ImGuiNET;
 
 namespace ImGuiBellEditor;
 
-public class ImGuiTextEditorBackend : ITextEditorBackend
+public class ImGuiTextBoxBackend : ITextBoxBackend
 {
     public void SetClipboard(string text)
     {
@@ -18,7 +18,7 @@ public class ImGuiTextEditorBackend : ITextEditorBackend
         throw new NotImplementedException();
     }
 
-    public void Render(TextEditor textEditor, List<LineRender> lineRenders)
+    public void Render(TextBox textBox, List<LineRender> lineRenders)
     {
         ImGui.BeginChild("Editor", new Vector2(0, 0), true, ImGuiWindowFlags.HorizontalScrollbar);
         ImGui.BeginChild("Page", new Vector2(500, 1000), false, ImGuiWindowFlags.NoScrollbar);

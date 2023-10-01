@@ -6,47 +6,21 @@ using Bell.Languages;
 
 namespace Bell;
 
-public enum WrapMode
-{
-    None,
-    Word,
-    BreakWord
-}
-
-public enum EolMode
-{
-    CRLF,
-    LF,
-    CR
-}
-
-public class TextEditor
+public partial class TextBox
 {
     // Data
     public Page Page { get; set; } = new();
-    public AutoComplete AutoComplete { get; set; }
+    public AutoComplete AutoComplete { get; set; } = new();
     
     // Action
-    private CommandSetHistory _commandSetHistory;
-    private Cursor _cursor;
+    private readonly CommandSetHistory _commandSetHistory = new();
+    private readonly Cursor _cursor = new();
     
-    // Options
-    public bool AutoIndent { get; set; } = true;
-    public bool Overwrite { get; set; } = false;
-    public bool ReadOnly { get; set; } = false;
-    public WrapMode WrapMode { get; set; } = WrapMode.Word;
-    public EolMode EolMode = EolMode.LF;
-    public bool SyntaxHighlighting { get; set; } = true;
-    public bool SyntaxFolding { get; set; } = true;
-    public Language Language { get; set; } = Language.PlainText();
-    public int FontSize { get; set; } //TODO cache by size or just get # char size to check
+    private readonly ITextBoxBackend _textBoxBackend;
     
-    // Backend
-    private ITextEditorBackend _textEditorBackend;
-    
-    public TextEditor(ITextEditorBackend textEditorBackend)
+    public TextBox(ITextBoxBackend textBoxBackend)
     {
-        _textEditorBackend = textEditorBackend;
+        _textBoxBackend = textBoxBackend;
     }
     
     // Method
@@ -72,7 +46,7 @@ public class TextEditor
 
     public void Render()
     {
-        _textEditorBackend.Render(this, Page.Text.GetRender());
+        _textBoxBackend.Render(this, Page.Text.GetRender());
     }
     
     // Input

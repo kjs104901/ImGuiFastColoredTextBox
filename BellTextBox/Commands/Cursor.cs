@@ -40,7 +40,7 @@ internal class MoveCursorSelectionCommands : Commands
         _textCoordinates = textCoordinates;
     }
     
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 }
@@ -60,7 +60,7 @@ internal class MoveCursorOriginCommands : Commands
         _textCoordinates = textCoordinates;
     }
     
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 }

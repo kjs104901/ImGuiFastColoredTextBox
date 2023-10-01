@@ -2,10 +2,10 @@
 
 internal abstract class Commands
 {
-    public abstract void Do(TextEditor textEditor);
+    public abstract void Do(TextBox textBox);
 }
 
 internal abstract class EditCommands : Commands
 {
-    public abstract void Undo(TextEditor textEditor);
+    public abstract void Undo(TextBox textBox);
 }

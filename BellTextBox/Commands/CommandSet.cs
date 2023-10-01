@@ -13,21 +13,21 @@ internal struct CommandSet
         _actions.Add(commands);
     }
 
-    public void Do(TextEditor textEditor)
+    public void Do(TextBox textBox)
     {
         foreach (Commands action in _actions)
         {
-            action.Do(textEditor);
+            action.Do(textBox);
         }
     }
 
-    public void Undo(TextEditor textEditor)
+    public void Undo(TextBox textBox)
     {
         foreach (Commands action in _actions)
         {
             if (action is EditCommands editAction)
             {
-                editAction.Undo(textEditor);
+                editAction.Undo(textBox);
             }
         }
     }

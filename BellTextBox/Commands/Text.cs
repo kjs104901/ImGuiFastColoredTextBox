@@ -36,66 +36,66 @@ internal class InputChar : EditCommands
         _c = c;
     }
     
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 
-    public override void Undo(TextEditor textEditor)
+    public override void Undo(TextBox textBox)
     {
     }
 }
 
 internal class IndentSelection : EditCommands
 {
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 
-    public override void Undo(TextEditor textEditor)
+    public override void Undo(TextBox textBox)
     {
     }
 }
 
 internal class DeleteSelectionCommands : EditCommands
 {
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 
-    public override void Undo(TextEditor textEditor)
+    public override void Undo(TextBox textBox)
     {
     }
 }
 
 internal class DeleteForwardCommands : EditCommands
 {
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 
-    public override void Undo(TextEditor textEditor)
+    public override void Undo(TextBox textBox)
     {
     }
 }
 
 internal class DeleteBackwardCommands : EditCommands
 {
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 
-    public override void Undo(TextEditor textEditor)
+    public override void Undo(TextBox textBox)
     {
     }
 }
 
 internal class DeleteLineCommands : EditCommands
 {
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 
-    public override void Undo(TextEditor textEditor)
+    public override void Undo(TextBox textBox)
     {
     }
 }
@@ -103,18 +103,18 @@ internal class DeleteLineCommands : EditCommands
 
 internal class CopyCommands : Commands
 {
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 }
 
 internal class PasteCommands : EditCommands
 {
-    public override void Do(TextEditor textEditor)
+    public override void Do(TextBox textBox)
     {
     }
 
-    public override void Undo(TextEditor textEditor)
+    public override void Undo(TextBox textBox)
     {
     }
 }

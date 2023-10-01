@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BellTextEditor\BellTextEditor.csproj" />
+      <ProjectReference Include="..\BellTextBox\BellTextBox.csproj" />
     </ItemGroup>
 
     <ItemGroup>

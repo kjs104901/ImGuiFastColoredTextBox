@@ -2,7 +2,7 @@
 
 namespace Bell.Data;
 
-public struct Cursor
+public class Cursor
 {
     public TextCoordinates Selection;
     public TextCoordinates Origin;
