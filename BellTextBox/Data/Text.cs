@@ -7,15 +7,16 @@ public class Text
     private readonly TextBox _textBox;
     
     private readonly List<Line> _lines = new();
+    public List<LineView> LineViews => _lineViewCache.Get();
+    private readonly Cache<List<LineView>> _lineViewCache;
 
-    public List<LineRender> LineRenders => _lineRendersCache.Get();
-    private readonly Cache<List<LineRender>> _lineRendersCache;
+    public List<LineRender> LineRenders = new(); //TODO cache?
     
     public Text(TextBox textBox)
     {
         _textBox = textBox;
 
-        _lineRendersCache = new Cache<List<LineRender>>(new List<LineRender>(), UpdateRender);
+        _lineViewCache = new Cache<List<LineView>>(new List<LineView>(), UpdateLineViews);
     }
     
     public void Set(string text)
@@ -27,17 +28,27 @@ public class Text
             line.SetString(lineText);
             _lines.Add(line);
         }
-        _lineRendersCache.SetDirty();
+        _lineViewCache.SetDirty();
+    }
+    
+    public List<LineRender> GetLineRenders()
+    {
+        LineRenders.Clear();
+        foreach (LineView lineView in LineViews)
+        {
+            LineRenders.Add(_lines[lineView.Line].LineRender);
+        }
+        return LineRenders;
     }
 
-    private List<LineRender> UpdateRender(List<LineRender> lineRenders)
+    private List<LineView> UpdateLineViews(List<LineView> lineViews)
     {
-        lineRenders.Clear();
-        foreach (Line line in _lines)
-        {
-            lineRenders.Add(line.GetRender());
-        }
-        return lineRenders;
+        //lineViews.Clear();
+        //foreach (Line line in _lines)
+        //{
+        //    lineViews.Add(line.GetRender());
+        //}
+        return lineViews;
     }
 
     public override string ToString()

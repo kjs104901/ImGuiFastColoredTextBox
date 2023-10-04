@@ -46,7 +46,7 @@ public partial class TextBox
 
     public void Render()
     {
-        _textBoxBackend.Render(this, Page.Text.GetRender());
+        _textBoxBackend.Render(this, Page.Text.GetLineRenders());
     }
 
     private void DoAction(Command command)

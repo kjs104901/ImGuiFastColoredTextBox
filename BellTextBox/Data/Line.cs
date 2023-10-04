@@ -32,6 +32,10 @@ public class Line
 
     public List<uint> Cutoffs => _cutoffsCache.Get();
     private readonly Cache<List<uint>> _cutoffsCache;
+    
+    
+    public LineRender LineRender => _lineLineRenderCache.Get();
+    private readonly Cache<LineRender> _lineLineRenderCache;
 
     public bool Visible = false;
     public bool Folded = false;
@@ -60,6 +64,7 @@ public class Line
         _cutoffsCache = new(new(), UpdateCutoff);
         _foldableCache = new(false, UpdateFoldable);
         _stringCache = new(string.Empty, UpdateString);
+        _lineLineRenderCache = new(new LineRender(), UpdateLineRender);
     }
 
     public void SetString(string line)
@@ -107,5 +112,10 @@ public class Line
         _textBox.StringBuilder.Clear();
         _textBox.StringBuilder.Append(CollectionsMarshal.AsSpan(_chars));
         return _textBox.ToString() ?? string.Empty;
+    }
+
+    private LineRender UpdateLineRender(LineRender _)
+    {
+        return _;
     }
 }
